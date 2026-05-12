@@ -10,7 +10,7 @@ RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:26.6.1
 
-LABEL org.opencontainers.image.source="https://github.com/NovaMachina/containers"
+LABEL org.opencontainers.image.source="https://github.com/novamachina/containers"
 LABEL org.opencontainers.image.description="Keycloak identity and access management, optimized build with PostgreSQL, metrics, and health"
 
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
