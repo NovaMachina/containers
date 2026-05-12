@@ -15,6 +15,11 @@ LABEL org.opencontainers.image.description="Keycloak identity and access managem
 
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
+USER root
+RUN chown -R 1000:0 /opt/keycloak/data && \
+    chmod -R g+rwX /opt/keycloak/data
+USER 1000
+
 HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
   CMD curl -f http://localhost:9000/health/ready || exit 1
 
